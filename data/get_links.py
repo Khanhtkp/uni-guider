@@ -6,13 +6,15 @@ import json
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import csv
+from webdriver_manager.chrome import ChromeDriverManager
+
 options = Options()
 options.add_argument("--headless")  # Run browser in headless mode
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36")  # Example user-agent
-service = Service(executable_path="chromedriver-mac-arm64/chromedriver")  # Replace with your chromedriver path
+service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
 def scrape(links: list):
     dict_data = []
