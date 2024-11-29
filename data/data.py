@@ -3,12 +3,13 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import json
+from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import urljoin
 
 # Setup Selenium
 options = Options()
 options.add_argument("--headless")  # Run browser in headless mode
-service = Service(executable_path="chromedriver-mac-arm64/chromedriver")  # Replace with your chromedriver path
+service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
 
 # Variables
